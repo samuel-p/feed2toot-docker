@@ -1,0 +1,1 @@
+* * * * * /usr/local/bin/feed2toot --debug -c /feed2toot/feed2toot.ini > /proc/1/fd/1 2>/proc/1/fd/2

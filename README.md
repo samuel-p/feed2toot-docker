@@ -1,10 +1,12 @@
-# feed2toot-docker
+# [feed2toot-docker](https://git.sp-codes.de/samuel-p/feed2toot-docker)
+
+[![Build Status](https://ci.sp-codes.de/api/badges/samuel-p/feed2toot-docker/status.svg)](https://ci.sp-codes.de/samuel-p/feed2toot-docker) ![Docker Pulls](https://img.shields.io/docker/pulls/samuelph/feed2toot)
 
 A Docker image for [feed2toot](https://gitlab.com/chaica/feed2toot).
 
 ## Usage
 
-Create a `feed2toot` directory and your custom `feed2toot.ini` with the [feed2toot config](https://gitlab.com/chaica/feed2toot#use-feed2toot) in this directory. You can use the path `/feed2toot` in that file, as the directory will be mounted to that path. 
+Create a `feed2toot` directory and your custom `feed2toot.ini` with the [feed2toot config](https://gitlab.com/chaica/feed2toot#use-feed2toot) in this directory. You can use the path `/feed2toot` in that file, as the directory will be mounted to that path.
 
 Example:
 

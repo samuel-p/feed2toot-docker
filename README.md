@@ -82,4 +82,4 @@ Now you can run the image like before.
 
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0)
 
-cachet-monitor is Free Software: It is licensed under GNU GPL v3 (See [LICENSE](LICENSE) for more information).
+feed2toot-docker is Free Software: It is licensed under GNU GPL v3 (See [LICENSE](LICENSE) for more information).

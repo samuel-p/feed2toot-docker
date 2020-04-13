@@ -3,7 +3,7 @@ MAINTAINER mail@sp-codes.de
 
 RUN pip3 install feed2toot
 
-RUN apt-get update && apt-get -y install cron
+RUN apt-get update && apt-get -y install cron curl
 
 WORKDIR feed2toot
 

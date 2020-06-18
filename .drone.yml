@@ -1,5 +1,5 @@
 kind: pipeline
-name: docker-amd
+name: linux-amd64
 
 platform:
   os: linux
@@ -9,6 +9,8 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
+      auto_tag: true
+      auto_tag_suffix: linux-amd64
       repo: samuelph/feed2toot
       username:
         from_secret: USERNAME
@@ -17,7 +19,7 @@ steps:
 
 ---
 kind: pipeline
-name: docker-arm
+name: linux-arm
 
 platform:
   os: linux
@@ -27,8 +29,35 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
+      auto_tag: true
+      auto_tag_suffix: linux-arm
       repo: samuelph/feed2toot
       username:
         from_secret: USERNAME
       password:
         from_secret: PASSWORD
+
+---
+kind: pipeline
+type: docker
+name: manifest
+
+steps:
+  - name: publish
+    image: plugins/manifest
+    settings:
+      auto_tag: true
+      ignore_missing: true
+      target: samuelph/feed2toot
+      template: samuelph/feed2toot:OS-ARCH
+      platforms:
+        - linux/amd64
+        - linux/arm
+      username:
+        from_secret: USERNAME
+      password:
+        from_secret: PASSWORD
+
+depends_on:
+  - linux-arm64
+  - linux-arm

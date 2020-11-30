@@ -1,4 +1,5 @@
-FROM python:3-slim
+FROM python:3.8.6-slim
+
 MAINTAINER mail@sp-codes.de
 
 RUN pip3 install feed2toot

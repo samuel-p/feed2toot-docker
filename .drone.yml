@@ -10,6 +10,8 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
+      purge: true
+      no_cache: true
       auto_tag: true
       auto_tag_suffix: linux-amd64
       repo: samuelph/feed2toot
@@ -17,6 +19,12 @@ steps:
         from_secret: USERNAME
       password:
         from_secret: PASSWORD
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
 
 ---
 kind: pipeline
@@ -31,6 +39,8 @@ steps:
   - name: docker
     image: plugins/docker
     settings:
+      purge: true
+      no_cache: true
       auto_tag: true
       auto_tag_suffix: linux-arm
       repo: samuelph/feed2toot
@@ -38,6 +48,41 @@ steps:
         from_secret: USERNAME
       password:
         from_secret: PASSWORD
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+
+---
+kind: pipeline
+type: docker
+name: linux-arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+  - name: docker
+    image: plugins/docker
+    settings:
+      purge: true
+      no_cache: true
+      auto_tag: true
+      auto_tag_suffix: linux-arm64
+      repo: samuelph/feed2toot
+      username:
+        from_secret: USERNAME
+      password:
+        from_secret: PASSWORD
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
 
 ---
 kind: pipeline
@@ -54,6 +99,7 @@ steps:
       template: samuelph/feed2toot:OS-ARCH
       platforms:
         - linux/amd64
+        - linux/arm64
         - linux/arm
       username:
         from_secret: USERNAME
@@ -62,4 +108,11 @@ steps:
 
 depends_on:
   - linux-amd64
+  - linux-arm64
   - linux-arm
+
+trigger:
+  branch:
+    - master
+  event:
+    - push

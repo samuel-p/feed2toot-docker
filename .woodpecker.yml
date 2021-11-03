@@ -1,0 +1,28 @@
+pipeline:
+  docker:
+    image: plugins/docker
+    secrets:
+      - DOCKER_USERNAME
+      - DOCKER_PASSWORD
+    repo: samuelph/feed2toot
+    tags: latest
+    when:
+      branch:
+        - main
+      event:
+        - push
+  cr:
+    image: plugins/docker
+    secrets:
+      - source: CR_USERNAME
+        target: DOCKER_USERNAME
+      - source: CR_PASSWORD
+        target: DOCKER_PASSWORD
+    registry: cr.sp-codes.de
+    repo: cr.sp-codes.de/feed2toot
+    tags: latest
+    when:
+      branch:
+        - main
+      event:
+        - push

@@ -3,7 +3,7 @@
     "samuel-p"
   ],
   "baseBranches": [
-    "master"
+    "main"
   ],
   "rangeStrategy": "bump"
 }
